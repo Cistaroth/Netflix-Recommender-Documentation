@@ -1,0 +1,1163 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>netflix_recommender.movie_recommender &#8212; Netflix Recommender 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=c9d161cb" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/netflix_recommender/movie_recommender';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Netflix Recommender 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/modules.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/modules.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">netflix_recommender.movie_recommender</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for netflix_recommender.movie_recommender</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">cast</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sentence_transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">SentenceTransformer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span>
+    <span class="n">classification_report</span><span class="p">,</span>
+    <span class="n">confusion_matrix</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiLabelBinarizer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">log</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.custom_exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">MODEL_NOT_FITTED_MSG</span><span class="p">,</span>
+    <span class="n">TRAIN_DATA_NON_MATCHING_LENGTH_MSG</span><span class="p">,</span>
+    <span class="n">TRAIN_Y_INVALID_VALUES_MSG</span><span class="p">,</span>
+    <span class="n">InvalidTrainDataError</span><span class="p">,</span>
+    <span class="n">ModelNotFitError</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">EMBEDDING_DEFAULT_MODEL</span><span class="p">,</span> <span class="n">CrossValidationGrid</span>
+
+
+<div class="viewcode-block" id="MovieRecommender">
+<a class="viewcode-back" href="../../api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MovieRecommender</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class for training and evaluating a movie recommendation model.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        plots_save_path (Path): The path to save the plots to.</span>
+<span class="sd">        sentence_transformer (SentenceTransformer): The sentence transformer model to use for text embeddings.</span>
+<span class="sd">        standard_scaler (StandardScaler): The standard scaler to use for feature scaling.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">plots_save_path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;cache&quot;</span><span class="p">,</span>
+        <span class="n">sentence_transformer</span><span class="p">:</span> <span class="n">SentenceTransformer</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span>
+            <span class="n">EMBEDDING_DEFAULT_MODEL</span>
+        <span class="p">),</span>
+        <span class="n">standard_scaler</span><span class="p">:</span> <span class="n">StandardScaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">(),</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the MovieRecommender model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            plots_save_path (Path, optional): The path to save the plots to. Defaults to Path(__file__).parent / &quot;cache&quot;.</span>
+<span class="sd">            sentence_transformer (SentenceTransformer, optional): The sentence transformer model to use for text embeddings. Defaults to SentenceTransformer(EMBEDDING_DEFAULT_MODEL).</span>
+<span class="sd">            standard_scaler (StandardScaler, optional): The standard scaler to use for feature scaling. Defaults to StandardScaler.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Save paths</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plots_save_path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">plots_save_path</span>
+
+        <span class="c1"># Embedding model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_model</span><span class="p">:</span> <span class="n">SentenceTransformer</span> <span class="o">=</span> <span class="n">sentence_transformer</span>
+        
+        <span class="c1"># Encoders</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_one_hot_encoders</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_one_hot_list_encoders</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">MultiLabelBinarizer</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Preprocessing models</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_standard_scaler</span><span class="p">:</span> <span class="n">StandardScaler</span> <span class="o">=</span> <span class="n">standard_scaler</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pca</span><span class="p">:</span> <span class="n">PCA</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">:</span> <span class="n">KNeighborsClassifier</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="MovieRecommender.generate_embeddings">
+<a class="viewcode-back" href="../../api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.generate_embeddings">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_embeddings</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generates text embeddings for the specified columns in the provided data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (pd.DataFrame): The data to generate embeddings for.</span>
+<span class="sd">            columns (list[str]): The columns to generate embeddings for.</span>
+<span class="sd">            verbose (bool, optional): Whether to show progress bars. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict[str, pd.DataFrame]: A dictionary mapping column names to embedded columns. </span>
+<span class="sd">                The embedded columns are DataFrames with the same index as the input data, </span>
+<span class="sd">                containing the embedded values for each column.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="s2">&quot; --- EMBEDDING COLUMNS --- &quot;</span><span class="p">)</span>
+
+        <span class="n">embeddings</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># Create embeddings for each column</span>
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">plain</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating embeddings for: </span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Convert column to list</span>
+            <span class="n">column_to_encode</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+
+            <span class="c1"># Create embeddings and store in DataFrame</span>
+            <span class="n">embedded_column</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embedding_model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+                <span class="n">column_to_encode</span><span class="p">,</span> <span class="n">show_progress_bar</span><span class="o">=</span><span class="n">verbose</span>
+            <span class="p">)</span>
+            <span class="n">embedded_column</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">embedded_column</span><span class="p">)</span>
+
+            <span class="c1"># Set column names</span>
+            <span class="n">embedded_column</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">_emb_dim_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">embedded_column</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="p">]</span>
+
+            <span class="n">embeddings</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">embedded_column</span>
+
+        <span class="k">return</span> <span class="n">embeddings</span></div>
+
+
+<div class="viewcode-block" id="MovieRecommender.one_hot_encode_columns">
+<a class="viewcode-back" href="../../api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.one_hot_encode_columns">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">one_hot_encode_columns</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">list_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        One hot encode columns in a DataFrame.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (pd.DataFrame): DataFrame to one hot encode columns from.</span>
+<span class="sd">            columns (list[str], optional): Columns to one hot encode. Defaults to [].</span>
+<span class="sd">            list_columns (list[str], optional): Columns to one hot encode as lists. Defaults to [].</span>
+<span class="sd">            verbose (bool, optional): Whether to print logs to the console. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple[dict[str, pd.DataFrame], dict[str, pd.DataFrame]]: A tuple containing two dictionaries. </span>
+<span class="sd">                The first dictionary maps column names to one hot encoded DataFrames. </span>
+<span class="sd">                The second dictionary maps column names to one hot encoded DataFrames as lists.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="s2">&quot; --- ONE HOT ENCODE COLUMNS --- &quot;</span><span class="p">)</span>
+
+        <span class="n">ohe_columns</span><span class="p">,</span> <span class="n">ohe_list_columns</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">verbose</span> <span class="ow">and</span> <span class="n">columns</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">plain</span><span class="p">(</span><span class="s2">&quot;ONE HOT ENCODING COLUMNS... &quot;</span><span class="p">)</span>
+        
+        <span class="c1"># One hot encode columns</span>
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+            <span class="c1"># Convert column to string</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+            <span class="c1"># Check if column has already been one hot encoded</span>
+            <span class="k">if</span> <span class="n">column</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_hot_encoders</span><span class="p">:</span>
+                <span class="c1"># Create one hot encoder</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_one_hot_encoders</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span>
+                    <span class="n">sparse_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span>
+                <span class="p">)</span>
+
+                <span class="c1"># One hot encode column</span>
+                <span class="n">column_encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_hot_encoders</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span>
+                    <span class="n">data</span><span class="p">[[</span><span class="n">column</span><span class="p">]]</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># One hot encode column</span>
+                <span class="n">column_encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_hot_encoders</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+                    <span class="n">data</span><span class="p">[[</span><span class="n">column</span><span class="p">]]</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Create one hot encoded DataFrame</span>
+            <span class="n">one_hot_encoder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_hot_encoders</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
+            <span class="n">column_encoded_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">column_encoded</span><span class="p">),</span>
+                <span class="n">columns</span><span class="o">=</span><span class="n">one_hot_encoder</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">([</span><span class="n">column</span><span class="p">]),</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Add one hot encoded DataFrame to dictionary</span>
+            <span class="n">ohe_columns</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">column_encoded_df</span>
+
+        <span class="k">if</span> <span class="n">verbose</span> <span class="ow">and</span> <span class="n">list_columns</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">plain</span><span class="p">(</span><span class="s2">&quot;ONE HOT ENCODING LIST COLUMNS... &quot;</span><span class="p">)</span>
+
+        <span class="c1"># One hot encode list columns</span>
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">list_columns</span><span class="p">:</span>
+            <span class="c1"># Convert column to string</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+            <span class="c1"># Check if column has already been one hot encoded</span>
+            <span class="k">if</span> <span class="n">column</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_hot_list_encoders</span><span class="p">:</span>
+                <span class="c1"># Create one hot encoder</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_one_hot_list_encoders</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">MultiLabelBinarizer</span><span class="p">()</span>
+
+                <span class="c1"># One hot encode column</span>
+                <span class="n">column_encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_hot_list_encoders</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span>
+                    <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># One hot encode column</span>
+                <span class="n">column_encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_hot_list_encoders</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+                    <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Create one hot encoded DataFrame</span>
+            <span class="n">multi_label_binarizer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_hot_list_encoders</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
+            <span class="n">column_encoded_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">column_encoded</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="n">multi_label_binarizer</span><span class="o">.</span><span class="n">classes_</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Add one hot encoded DataFrame to dictionary</span>
+            <span class="n">ohe_list_columns</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">column_encoded_df</span>
+
+        <span class="k">return</span> <span class="n">ohe_columns</span><span class="p">,</span> <span class="n">ohe_list_columns</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_validate_train_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">train_x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">train_y</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validates the train data by checking if the lengths of train_x and train_y match, </span>
+<span class="sd">        and if the values of train_y are either 0 or 1.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            train_x (pd.DataFrame): The training data.</span>
+<span class="sd">            train_y (pd.Series): The training labels.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            InvalidTrainDataError: If the lengths of train_x and train_y do not match, </span>
+<span class="sd">                or if the values of train_y are not either 0 or 1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_y</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">InvalidTrainDataError</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="n">TRAIN_DATA_NON_MATCHING_LENGTH_MSG</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">train_y</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="n">InvalidTrainDataError</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="n">TRAIN_Y_INVALID_VALUES_MSG</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MovieRecommender.train">
+<a class="viewcode-back" href="../../api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.train">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">train_x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">train_y</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+        <span class="n">cross_validation_grid</span><span class="p">:</span> <span class="n">CrossValidationGrid</span> <span class="o">=</span> <span class="n">CrossValidationGrid</span><span class="p">(),</span>
+        <span class="n">plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Trains a classification model on the given data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            train_x (pd.DataFrame): The training data.</span>
+<span class="sd">            train_y (pd.Series): The training labels.</span>
+<span class="sd">            cross_validation_grid (CrossValidationGrid, optional): The cross validation grid to use. </span>
+<span class="sd">                Defaults to CrossValidationGrid().</span>
+<span class="sd">            plot (bool, optional): Whether to plot the cross validation results. Defaults to True.</span>
+<span class="sd">            verbose (bool, optional): Whether to print logs to the console. Defaults to True.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            InvalidTrainDataError: If the lengths of train_x and train_y do not match, </span>
+<span class="sd">                or if the values of train_y are not either 0 or 1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="s2">&quot; --- Training Classification Model --- &quot;</span><span class="p">)</span>
+
+        <span class="c1"># Validate train data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_train_data</span><span class="p">(</span><span class="n">train_x</span><span class="o">=</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="o">=</span><span class="n">train_y</span><span class="p">)</span>
+
+        <span class="c1"># Standardize train data</span>
+        <span class="n">train_x_standard_scaled</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_standard_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">train_x</span><span class="p">)</span>
+
+        <span class="c1"># Cross validate and select optimal model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cross_validate_and_select</span><span class="p">(</span>
+            <span class="n">train_x_standard_scaled</span><span class="o">=</span><span class="n">train_x_standard_scaled</span><span class="p">,</span>
+            <span class="n">train_y</span><span class="o">=</span><span class="n">train_y</span><span class="p">,</span>
+            <span class="n">cross_validation_grid</span><span class="o">=</span><span class="n">cross_validation_grid</span><span class="p">,</span>
+            <span class="n">plot</span><span class="o">=</span><span class="n">plot</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cross_validate_and_select</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">train_x_standard_scaled</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">train_y</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+        <span class="n">cross_validation_grid</span><span class="p">:</span> <span class="n">CrossValidationGrid</span><span class="p">,</span>
+        <span class="n">plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Cross validates the model and selects the optimal hyperparameters.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            train_x_standard_scaled (np.ndarray): The preprocessed training data.</span>
+<span class="sd">            train_y (pd.Series): The training labels.</span>
+<span class="sd">            cross_validation_grid (CrossValidationGrid): The cross validation grid to use.</span>
+<span class="sd">            plot (bool, optional): Whether to plot the cross validation results. Defaults to True.</span>
+<span class="sd">            verbose (bool, optional): Whether to print logs to the console. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="s2">&quot; --- CROSS VALIDATING AND SELECTING OPTIMAL MODEL --- &quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">plain</span><span class="p">(</span><span class="s2">&quot;Cross validating to find optimal parameters...&quot;</span><span class="p">)</span>
+            <span class="n">hyperparameter_combinations</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">cross_validation_grid</span><span class="o">.</span><span class="n">product</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">hyperparameter_combinations</span> <span class="o">=</span> <span class="n">cross_validation_grid</span><span class="o">.</span><span class="n">product</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Cross validate by fitting a model for each combination of hyperparameters</span>
+        <span class="k">for</span> <span class="n">properties</span> <span class="ow">in</span> <span class="n">hyperparameter_combinations</span><span class="p">:</span>
+            <span class="c1"># Unpack hyperparameters</span>
+            <span class="n">knn_n_neighbours</span><span class="p">,</span> <span class="n">knn_weight</span><span class="p">,</span> <span class="n">knn_metric</span><span class="p">,</span> <span class="n">pca_n_components</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">properties</span>
+
+            <span class="c1"># PCA preprocessing</span>
+            <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">pca_n_components</span><span class="p">)</span>
+            <span class="n">train_x_preprocessed</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_x_standard_scaled</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+
+            <span class="c1"># Initialize model</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span>
+                <span class="n">n_neighbors</span><span class="o">=</span><span class="n">knn_n_neighbours</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">knn_weight</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">knn_metric</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Cross validate</span>
+            <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span>
+                <span class="n">estimator</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+                <span class="n">X</span><span class="o">=</span><span class="n">train_x_preprocessed</span><span class="p">,</span>
+                <span class="n">y</span><span class="o">=</span><span class="n">train_y</span><span class="p">,</span>
+                <span class="n">cv</span><span class="o">=</span><span class="n">cross_validation_grid</span><span class="o">.</span><span class="n">folds</span><span class="p">,</span>
+                <span class="n">scoring</span><span class="o">=</span><span class="n">cross_validation_grid</span><span class="o">.</span><span class="n">validation_metric</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">mean_score</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+
+            <span class="c1"># Store results</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;pca_n_components&quot;</span><span class="p">:</span> <span class="n">pca_n_components</span><span class="p">,</span>
+                    <span class="s2">&quot;knn_n_neighbors&quot;</span><span class="p">:</span> <span class="n">knn_n_neighbours</span><span class="p">,</span>
+                    <span class="s2">&quot;knn_weights&quot;</span><span class="p">:</span> <span class="n">knn_weight</span><span class="p">,</span>
+                    <span class="s2">&quot;knn_metrics&quot;</span><span class="p">:</span> <span class="n">knn_metric</span><span class="p">,</span>
+                    <span class="s2">&quot;cv_scores&quot;</span><span class="p">:</span> <span class="n">mean_score</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Convert results to DataFrame</span>
+        <span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="c1"># Plot cross validation results</span>
+        <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="s2">&quot; --- PLOTTING RESULT OF CROSS VALIDATION --- &quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_validation_plots</span><span class="p">(</span>
+                <span class="n">results</span><span class="o">=</span><span class="n">results_df</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">cross_validation_grid</span><span class="o">.</span><span class="n">validation_metric</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="s2">&quot; --- CHOOSING OPTIMAL MODEL --- &quot;</span><span class="p">)</span>
+
+        <span class="c1"># Select optimal model</span>
+        <span class="k">if</span> <span class="n">cross_validation_grid</span><span class="o">.</span><span class="n">_best_row_strategy</span> <span class="o">==</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span>
+            <span class="n">best_row</span> <span class="o">=</span> <span class="n">results_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">results_df</span><span class="p">[</span><span class="s2">&quot;cv_scores&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">best_row</span> <span class="o">=</span> <span class="n">results_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">results_df</span><span class="p">[</span><span class="s2">&quot;cv_scores&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]</span>
+
+        <span class="c1"># Unpack optimal hyperparameters</span>
+        <span class="n">best_n_components</span> <span class="o">=</span> <span class="n">best_row</span><span class="p">[</span><span class="s2">&quot;pca_n_components&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">best_n_neighbors</span> <span class="o">=</span> <span class="n">best_row</span><span class="p">[</span><span class="s2">&quot;knn_n_neighbors&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">best_weight</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="s2">&quot;distance&quot;</span><span class="p">],</span> <span class="n">best_row</span><span class="p">[</span><span class="s2">&quot;knn_weights&quot;</span><span class="p">])</span>
+        <span class="n">best_metric</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">best_row</span><span class="p">[</span><span class="s2">&quot;knn_metrics&quot;</span><span class="p">])</span>
+
+        <span class="c1"># Store optimal model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">best_n_components</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span>
+            <span class="n">n_neighbors</span><span class="o">=</span><span class="n">best_n_neighbors</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">best_weight</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">best_metric</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_validation_plots</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">scoring</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots the results of the cross validation.</span>
+
+<span class="sd">        The results are plotted in a grid where the x-axis is the hyperparameter being varied,</span>
+<span class="sd">        the y-axis is the scoring metric, and each subplot is a different combination of hyperparameters.</span>
+
+<span class="sd">        The top row of subplots shows the scoring metric vs the number of nearest neighbors for KNN,</span>
+<span class="sd">        and the bottom row shows the scoring metric vs the number of components for PCA.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            results (pd.DataFrame): The DataFrame containing the results of the cross validation.</span>
+<span class="sd">            scoring (str): The scoring metric used for cross validation.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Get unique values of hyperparameters        </span>
+        <span class="n">knn_weights_unique</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;knn_weights&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+        <span class="n">knn_metrics_unique</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;knn_metrics&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+        <span class="c1"># Create subplots</span>
+        <span class="n">nrows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">knn_metrics_unique</span><span class="p">)</span>
+        <span class="n">ncols</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">knn_weights_unique</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+
+        <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+            <span class="n">nrows</span><span class="o">=</span><span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="n">ncols</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">ncols</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">nrows</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">nrows</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Plot results</span>
+        <span class="k">for</span> <span class="n">row</span><span class="p">,</span> <span class="n">metric</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">knn_metrics_unique</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">column</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">knn_weights_unique</span><span class="p">):</span>
+                <span class="n">subset</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span>
+                    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;knn_metrics&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">metric</span><span class="p">)</span>
+                    <span class="o">&amp;</span> <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;knn_weights&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">weight</span><span class="p">)</span>
+                <span class="p">]</span>
+
+                <span class="c1"># Scoring vs K</span>
+                <span class="n">k_scores</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">subset</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;knn_n_neighbors&quot;</span><span class="p">)[</span><span class="s2">&quot;cv_scores&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+                <span class="p">)</span>
+
+                <span class="n">axes_k</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">column</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span>
+
+                <span class="n">axes_k</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                    <span class="n">k_scores</span><span class="p">[</span><span class="s2">&quot;knn_n_neighbors&quot;</span><span class="p">],</span> <span class="n">k_scores</span><span class="p">[</span><span class="s2">&quot;cv_scores&quot;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span>
+                <span class="p">)</span>
+
+                <span class="n">axes_k</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metric</span><span class="si">}</span><span class="s2"> | weight=</span><span class="si">{</span><span class="n">weight</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">scoring</span><span class="si">}</span><span class="s2"> vs K&quot;</span><span class="p">)</span>
+                <span class="n">axes_k</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Number of Neighbors&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">column</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">axes_k</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CV </span><span class="si">{</span><span class="n">scoring</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">axes_k</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+                <span class="c1"># Scoring vs PCA</span>
+                <span class="n">pca_scores</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">subset</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;pca_n_components&quot;</span><span class="p">)[</span><span class="s2">&quot;cv_scores&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+                <span class="p">)</span>
+
+                <span class="n">axes_pca</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">column</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="n">axes_pca</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                    <span class="n">pca_scores</span><span class="p">[</span><span class="s2">&quot;pca_n_components&quot;</span><span class="p">],</span> <span class="n">pca_scores</span><span class="p">[</span><span class="s2">&quot;cv_scores&quot;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span>
+                <span class="p">)</span>
+
+                <span class="n">axes_pca</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metric</span><span class="si">}</span><span class="s2"> | weight=</span><span class="si">{</span><span class="n">weight</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">scoring</span><span class="si">}</span><span class="s2"> vs PCA&quot;</span><span class="p">)</span>
+                <span class="n">axes_pca</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;PCA n_components&quot;</span><span class="p">)</span>
+                <span class="n">axes_pca</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Adjust spacing and save</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plots_save_path</span> <span class="o">/</span> <span class="s2">&quot;cross_validation_sumary.png&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MovieRecommender.predict">
+<a class="viewcode-back" href="../../api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.predict">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predict_x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Predicts the ratings for a given set of movies.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            predict_x (pd.DataFrame): The DataFrame containing the movies to predict ratings for.</span>
+<span class="sd">            verbose (bool, optional): Whether or not to print the steps of the prediction process. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            np.ndarray: The predicted ratings.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ModelNotFitError: If the model has not been fit before calling this method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="s2">&quot; --- PREDICTING --- &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_standard_scaler</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pca</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ModelNotFitError</span><span class="p">(</span><span class="n">MODEL_NOT_FITTED_MSG</span><span class="p">)</span>
+
+        <span class="n">predict_x_standard_scaled</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_standard_scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">predict_x</span><span class="p">)</span>
+        <span class="n">predict_x_preprocessed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">predict_x_standard_scaled</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">predict_x_preprocessed</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MovieRecommender.preprocess_train_predict">
+<a class="viewcode-back" href="../../api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.preprocess_train_predict">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">preprocess_train_predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">train_x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">train_y</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+        <span class="n">predict_x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">embedding_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">one_hot_encode_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">one_hot_encode_list_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">cross_validation_grid</span><span class="p">:</span> <span class="n">CrossValidationGrid</span> <span class="o">=</span> <span class="n">CrossValidationGrid</span><span class="p">(),</span>
+        <span class="n">plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Classifies matches based on the given training data and predicts ratings for a given set of movies.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            train_x (pd.DataFrame): The DataFrame containing the training data.</span>
+<span class="sd">            train_y (pd.Series): The Series containing the training labels.</span>
+<span class="sd">            predict_x (pd.DataFrame): The DataFrame containing the movies to predict ratings for.</span>
+<span class="sd">            embedding_columns (list[str], optional): The columns to generate embeddings for. Defaults to [].</span>
+<span class="sd">            one_hot_encode_columns (list[str], optional): The columns to one-hot encode. Defaults to [].</span>
+<span class="sd">            one_hot_encode_list_columns (list[str], optional): The list columns to one-hot encode. Defaults to [].</span>
+<span class="sd">            cross_validation_grid (CrossValidationGrid, optional): The cross validation grid to use. Defaults to CrossValidationGrid().</span>
+<span class="sd">            plot (bool, optional): Whether to plot the cross validation results. Defaults to True.</span>
+<span class="sd">            verbose (bool, optional): Whether to print logs to the console. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            np.ndarray: The predicted ratings.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="s2">&quot; --- CLASSIFYING MATCHES --- &quot;</span><span class="p">)</span>
+
+        <span class="c1"># Preprocess</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;train_x&quot;</span><span class="p">:</span> <span class="n">train_x</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="s2">&quot;predict_x&quot;</span><span class="p">:</span> <span class="n">predict_x</span><span class="o">.</span><span class="n">dropna</span><span class="p">()}</span>
+        <span class="k">for</span> <span class="n">data_type</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; --- PREPROCESSING </span><span class="si">{</span><span class="n">data_type</span><span class="si">}</span><span class="s2"> --- &quot;</span><span class="p">)</span>
+
+            <span class="c1"># Embeddings</span>
+            <span class="k">if</span> <span class="n">embedding_columns</span><span class="p">:</span>
+
+                <span class="c1"># Generate embeddings</span>
+                <span class="n">embeddings_map</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_embeddings</span><span class="p">(</span>
+                    <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">data_type</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">embedding_columns</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
+                <span class="p">)</span>
+
+                <span class="c1"># Drop original columns</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">data_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data_type</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">embedding_columns</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># Add embeddings</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">data_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">data_type</span><span class="p">],</span> <span class="o">*</span><span class="n">embeddings_map</span><span class="o">.</span><span class="n">values</span><span class="p">()],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+                <span class="p">)</span>
+
+            <span class="c1"># One-hot encoding</span>
+            <span class="k">if</span> <span class="n">one_hot_encode_columns</span> <span class="ow">or</span> <span class="n">one_hot_encode_list_columns</span><span class="p">:</span>
+                <span class="c1"># One-hot encode</span>
+                <span class="n">one_hot_encoded_columns</span><span class="p">,</span> <span class="n">one_hot_encoded_list_columns</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">one_hot_encode_columns</span><span class="p">(</span>
+                        <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">data_type</span><span class="p">],</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="n">one_hot_encode_columns</span><span class="p">,</span>
+                        <span class="n">list_columns</span><span class="o">=</span><span class="n">one_hot_encode_list_columns</span><span class="p">,</span>
+                        <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+                <span class="c1"># Drop original columns</span>
+                <span class="n">data_df</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data_type</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+                    <span class="n">one_hot_encode_columns</span> <span class="o">+</span> <span class="n">one_hot_encode_list_columns</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+                <span class="p">)</span>
+
+                <span class="c1"># Add one-hot encoded columns</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">data_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">data_df</span><span class="p">]</span>
+                    <span class="o">+</span> <span class="p">[</span><span class="o">*</span><span class="n">one_hot_encoded_columns</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+                    <span class="o">+</span> <span class="p">[</span><span class="o">*</span><span class="n">one_hot_encoded_list_columns</span><span class="o">.</span><span class="n">values</span><span class="p">()],</span>
+                    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="p">)</span>
+
+        <span class="c1"># Split train and predict</span>
+        <span class="n">train_x</span><span class="p">,</span> <span class="n">predict_x</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;train_x&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;predict_x&quot;</span><span class="p">]</span>
+
+        <span class="c1"># Remove rows with missing values in train</span>
+        <span class="n">training_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+        <span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">training_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">training_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Remove rows with missing values in predict</span>
+        <span class="n">predict_x</span> <span class="o">=</span> <span class="n">predict_x</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+        <span class="c1"># Train</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+            <span class="n">train_x</span><span class="o">=</span><span class="n">train_x</span><span class="p">,</span>
+            <span class="n">train_y</span><span class="o">=</span><span class="n">train_y</span><span class="p">,</span>
+            <span class="n">cross_validation_grid</span><span class="o">=</span><span class="n">cross_validation_grid</span><span class="p">,</span>
+            <span class="n">plot</span><span class="o">=</span><span class="n">plot</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Predict</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">predict_x</span><span class="o">=</span><span class="n">predict_x</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MovieRecommender.preprocess_train_suggest">
+<a class="viewcode-back" href="../../api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.preprocess_train_suggest">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">preprocess_train_suggest</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">train_x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">train_y</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+        <span class="n">predict_x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">embedding_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">one_hot_encode_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">one_hot_encode_list_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">cross_validation_grid</span><span class="p">:</span> <span class="n">CrossValidationGrid</span> <span class="o">=</span> <span class="n">CrossValidationGrid</span><span class="p">(),</span>
+        <span class="n">plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Preprocesses the data for training the model and making predictions.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            train_x (pd.DataFrame): The training data.</span>
+<span class="sd">            train_y (pd.Series): The labels for the training data.</span>
+<span class="sd">            predict_x (pd.DataFrame): The data to make predictions on.</span>
+<span class="sd">            embedding_columns (list[str], optional): The columns to generate embeddings for. Defaults to [].</span>
+<span class="sd">            one_hot_encode_columns (list[str], optional): The columns to one-hot encode. Defaults to [].</span>
+<span class="sd">            one_hot_encode_list_columns (list[str], optional): The columns to one-hot encode as lists. Defaults to [].</span>
+<span class="sd">            cross_validation_grid (CrossValidationGrid, optional): The cross-validation grid to use. Defaults to CrossValidationGrid().</span>
+<span class="sd">            plot (bool, optional): Whether to plot the results of cross-validation. Defaults to True.</span>
+<span class="sd">            verbose (bool, optional): Whether to show progress bars. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            pd.DataFrame: The data with the predicted labels, filtered to only include the rows with a positive prediction.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Obtain predictions</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess_train_predict</span><span class="p">(</span>
+            <span class="n">train_x</span><span class="o">=</span><span class="n">train_x</span><span class="p">,</span>
+            <span class="n">train_y</span><span class="o">=</span><span class="n">train_y</span><span class="p">,</span>
+            <span class="n">predict_x</span><span class="o">=</span><span class="n">predict_x</span><span class="p">,</span>
+            <span class="n">embedding_columns</span><span class="o">=</span><span class="n">embedding_columns</span><span class="p">,</span>
+            <span class="n">one_hot_encode_columns</span><span class="o">=</span><span class="n">one_hot_encode_columns</span><span class="p">,</span>
+            <span class="n">one_hot_encode_list_columns</span><span class="o">=</span><span class="n">one_hot_encode_list_columns</span><span class="p">,</span>
+            <span class="n">cross_validation_grid</span><span class="o">=</span><span class="n">cross_validation_grid</span><span class="p">,</span>
+            <span class="n">plot</span><span class="o">=</span><span class="n">plot</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Filter</span>
+        <span class="n">selected</span> <span class="o">=</span> <span class="n">predict_x</span><span class="p">[</span><span class="n">y_pred</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">selected</span></div>
+
+
+<div class="viewcode-block" id="MovieRecommender.obtain_classfication_report">
+<a class="viewcode-back" href="../../api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.obtain_classfication_report">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">obtain_classfication_report</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">y_true</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">y_pred</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtains a classification report for the given true and predicted labels.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            y_true (np.ndarray): The true labels.</span>
+<span class="sd">            y_pred (np.ndarray): The predicted labels.</span>
+<span class="sd">            plot (bool, optional): Whether to plot the confusion matrix. Defaults to True.</span>
+<span class="sd">            verbose (bool, optional): Whether to show the classification report. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            np.ndarray: The confusion matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Confusion matrix</span>
+        <span class="n">confusion_matrix_array</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+
+        <span class="c1"># Plot</span>
+        <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+            <span class="n">confusion_matrix_display</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span>
+                <span class="n">confusion_matrix</span><span class="o">=</span><span class="n">confusion_matrix_array</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">confusion_matrix_display</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plots_save_path</span> <span class="o">/</span> <span class="s2">&quot;confusion_matrix.png&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Classification report</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="s2">&quot; --- CLASSIFICATION REPORT --- &quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">))</span>
+
+        <span class="c1"># Return confusion matrix</span>
+        <span class="k">return</span> <span class="n">confusion_matrix_array</span></div>
+
+
+<div class="viewcode-block" id="MovieRecommender.train_evaluate">
+<a class="viewcode-back" href="../../api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.train_evaluate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">train_evaluate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">data_x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">data_y</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+        <span class="n">embedding_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">one_hot_encode_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">one_hot_encode_list_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">cross_validation_grid</span><span class="p">:</span> <span class="n">CrossValidationGrid</span> <span class="o">=</span> <span class="n">CrossValidationGrid</span><span class="p">(),</span>
+        <span class="n">test_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
+        <span class="n">plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Trains a model and evaluates its performance on a test set.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data_x (pd.DataFrame): The feature data.</span>
+<span class="sd">            data_y (pd.Series): The target data.</span>
+<span class="sd">            embedding_columns (list[str], optional): The columns to generate embeddings for. Defaults to [].</span>
+<span class="sd">            one_hot_encode_columns (list[str], optional): The columns to one-hot encode. Defaults to [].</span>
+<span class="sd">            one_hot_encode_list_columns (list[str], optional): The list columns to one-hot encode. Defaults to [].</span>
+<span class="sd">            cross_validation_grid (CrossValidationGrid, optional): The cross validation grid to use. Defaults to CrossValidationGrid().</span>
+<span class="sd">            test_size (float, optional): The proportion of the data to include in the test set. Defaults to 0.2.</span>
+<span class="sd">            random_state (int, optional): The random state to use when splitting the data. Defaults to 42.</span>
+<span class="sd">            plot (bool, optional): Whether to plot the confusion matrix. Defaults to True.</span>
+<span class="sd">            verbose (bool, optional): Whether to print logs to the console. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            np.ndarray: The confusion matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Train-test split</span>
+        <span class="n">train_x</span><span class="p">,</span> <span class="n">test_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+            <span class="n">data_x</span><span class="p">,</span> <span class="n">data_y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">test_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Preprocess, train and predict</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess_train_predict</span><span class="p">(</span>
+            <span class="n">train_x</span><span class="o">=</span><span class="n">train_x</span><span class="p">,</span>
+            <span class="n">train_y</span><span class="o">=</span><span class="n">train_y</span><span class="p">,</span>
+            <span class="n">predict_x</span><span class="o">=</span><span class="n">test_x</span><span class="p">,</span>
+            <span class="n">embedding_columns</span><span class="o">=</span><span class="n">embedding_columns</span><span class="p">,</span>
+            <span class="n">one_hot_encode_columns</span><span class="o">=</span><span class="n">one_hot_encode_columns</span><span class="p">,</span>
+            <span class="n">one_hot_encode_list_columns</span><span class="o">=</span><span class="n">one_hot_encode_list_columns</span><span class="p">,</span>
+            <span class="n">cross_validation_grid</span><span class="o">=</span><span class="n">cross_validation_grid</span><span class="p">,</span>
+            <span class="n">plot</span><span class="o">=</span><span class="n">plot</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Obtain classification report</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obtain_classfication_report</span><span class="p">(</span>
+            <span class="n">y_true</span><span class="o">=</span><span class="n">test_y</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">plot</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MovieRecommender.train_suggest_from_API">
+<a class="viewcode-back" href="../../api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.train_suggest_from_API">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">train_suggest_from_API</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">likes</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+        <span class="n">dislikes</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+        <span class="n">api_call</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+        <span class="n">new_data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">embedding_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">one_hot_encode_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">one_hot_encode_list_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">cross_validation_grid</span><span class="p">:</span> <span class="n">CrossValidationGrid</span> <span class="o">=</span> <span class="n">CrossValidationGrid</span><span class="p">(),</span>
+        <span class="n">plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>   
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetches information about a movie or TV show from The Movie Database by its title, preprocesses the data,</span>
+<span class="sd">        trains a model based on the given data, and predicts ratings for a given set of movies.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            likes (list): The movies or TV shows that the user likes.</span>
+<span class="sd">            dislikes (list): The movies or TV shows that the user dislikes.</span>
+<span class="sd">            api_call (Callable[[Any], dict[str, str | float | int | list | None] | None]): A function that</span>
+<span class="sd">                fetches information about a movie or TV show from The Movie Database.</span>
+<span class="sd">            new_data (pd.DataFrame): The movies or TV shows to predict ratings for.</span>
+<span class="sd">            embedding_columns (list[str], optional): The columns to generate embeddings for. Defaults to [].</span>
+<span class="sd">            one_hot_encode_columns (list[str], optional): The columns to one-hot encode. Defaults to [].</span>
+<span class="sd">            one_hot_encode_list_columns (list[str], optional): The list columns to one-hot encode. Defaults to [].</span>
+<span class="sd">            cross_validation_grid (CrossValidationGrid, optional): The cross validation grid to use. Defaults to CrossValidationGrid().</span>
+<span class="sd">            plot (bool, optional): Whether to plot the cross validation results. Defaults to True.</span>
+<span class="sd">            verbose (bool, optional): Whether to print logs to the console. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            pd.DataFrame: The predicted ratings.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="s2">&quot; --- FETCHING INFORMATION FROM API --- &quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">plain</span><span class="p">(</span><span class="s2">&quot; FETCHING INFORMATION FROM THE API... &quot;</span><span class="p">)</span>
+            <span class="n">iterator</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">likes</span> <span class="o">+</span> <span class="n">dislikes</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">iterator</span> <span class="o">=</span> <span class="n">likes</span> <span class="o">+</span> <span class="n">dislikes</span>
+
+        <span class="c1"># Fetch information from API</span>
+        <span class="n">train_x</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterator</span><span class="p">:</span>
+            <span class="n">show_info</span> <span class="o">=</span> <span class="n">api_call</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">show_info</span><span class="p">:</span>
+                <span class="n">train_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">show_info</span><span class="p">)</span>
+
+        <span class="c1"># Obtain training data with no missing values and save to cache</span>
+        <span class="n">train_x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">train_x</span><span class="p">)</span>
+        <span class="n">train_y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">likes</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">dislikes</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ratings&quot;</span><span class="p">)</span>
+        <span class="n">train_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+        <span class="n">train_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+            <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;cache&quot;</span> <span class="o">/</span> <span class="s2">&quot;data.csv&quot;</span><span class="p">,</span>
+            <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">quotechar</span><span class="o">=</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span>
+            <span class="n">quoting</span><span class="o">=</span><span class="n">csv</span><span class="o">.</span><span class="n">QUOTE_NONE</span><span class="p">,</span>
+            <span class="n">escapechar</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Select train_x and train_y</span>
+        <span class="n">train_x</span> <span class="o">=</span> <span class="n">train_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;ratings&quot;</span><span class="p">)</span>
+        <span class="n">train_y</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="s2">&quot;ratings&quot;</span><span class="p">]</span>
+
+        <span class="c1"># Preprocess, train and suggest</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess_train_suggest</span><span class="p">(</span>
+            <span class="n">train_x</span><span class="o">=</span><span class="n">train_x</span><span class="p">,</span>
+            <span class="n">train_y</span><span class="o">=</span><span class="n">train_y</span><span class="p">,</span>
+            <span class="n">predict_x</span><span class="o">=</span><span class="n">new_data</span><span class="p">,</span>
+            <span class="n">embedding_columns</span><span class="o">=</span><span class="n">embedding_columns</span><span class="p">,</span>
+            <span class="n">one_hot_encode_columns</span><span class="o">=</span><span class="n">one_hot_encode_columns</span><span class="p">,</span>
+            <span class="n">one_hot_encode_list_columns</span><span class="o">=</span><span class="n">one_hot_encode_list_columns</span><span class="p">,</span>
+            <span class="n">cross_validation_grid</span><span class="o">=</span><span class="n">cross_validation_grid</span><span class="p">,</span>
+            <span class="n">plot</span><span class="o">=</span><span class="n">plot</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+        <span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+Movie Recommender
+===================
+
+Core package for the Netflix recommender system.
+
+.. autoclass:: netflix_recommender.movie_recommender.MovieRecommender
+    :members:

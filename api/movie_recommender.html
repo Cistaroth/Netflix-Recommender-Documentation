@@ -1,0 +1,689 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Movie Recommender &#8212; Netflix Recommender 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=c9d161cb" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/movie_recommender';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Utilities" href="utils.html" />
+    <link rel="prev" title="Log Utilities" href="log.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Netflix Recommender 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="modules.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="modules.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="netflix_recommender.html">Netflix Recommender</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api_utils.html">API Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_exceptions.html">Custom Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="log.html">Log Utilities</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Movie Recommender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utilities</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">API Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="netflix_recommender.html" class="nav-link">Netflix Recommender</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Movie Recommender</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="movie-recommender">
+<h1>Movie Recommender<a class="headerlink" href="#movie-recommender" title="Link to this heading">#</a></h1>
+<p>Core package for the Netflix recommender system.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="netflix_recommender.movie_recommender.MovieRecommender">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">netflix_recommender.movie_recommender.</span></span><span class="sig-name descname"><span class="pre">MovieRecommender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plots_save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PosixPath('/home/cistaroth/Projects/Movie-Recommender-Module/src/netflix_recommender/cache')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sentence_transformer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SentenceTransformer(</span>&#160;&#160; <span class="pre">(0):</span> <span class="pre">Transformer({'max_seq_length':</span> <span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'do_lower_case'</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="k"><span class="pre">False</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'architecture'</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">'BertModel'})</span>&#160;&#160; <span class="pre">(1):</span> <span class="pre">Pooling({'word_embedding_dimension':</span> <span class="pre">384</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'pooling_mode_cls_token'</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="k"><span class="pre">False</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'pooling_mode_mean_tokens'</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="k"><span class="pre">True</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'pooling_mode_max_tokens'</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="k"><span class="pre">False</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'pooling_mode_mean_sqrt_len_tokens'</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="k"><span class="pre">False</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'pooling_mode_weightedmean_tokens'</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="k"><span class="pre">False</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'pooling_mode_lasttoken'</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="k"><span class="pre">False</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'include_prompt'</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">True})</span>&#160;&#160; <span class="pre">(2):</span> <span class="pre">Normalize()</span> <span class="pre">)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standard_scaler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StandardScaler()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/netflix_recommender/movie_recommender.html#MovieRecommender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netflix_recommender.movie_recommender.MovieRecommender" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class for training and evaluating a movie recommendation model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plots_save_path</strong> (<em>Path</em>)</p></li>
+<li><p><strong>sentence_transformer</strong> (<em>SentenceTransformer</em>)</p></li>
+<li><p><strong>standard_scaler</strong> (<em>StandardScaler</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="netflix_recommender.movie_recommender.MovieRecommender.plots_save_path">
+<span class="sig-name descname"><span class="pre">plots_save_path</span></span><a class="headerlink" href="#netflix_recommender.movie_recommender.MovieRecommender.plots_save_path" title="Link to this definition">#</a></dt>
+<dd><p>The path to save the plots to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="netflix_recommender.movie_recommender.MovieRecommender.sentence_transformer">
+<span class="sig-name descname"><span class="pre">sentence_transformer</span></span><a class="headerlink" href="#netflix_recommender.movie_recommender.MovieRecommender.sentence_transformer" title="Link to this definition">#</a></dt>
+<dd><p>The sentence transformer model to use for text embeddings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SentenceTransformer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="netflix_recommender.movie_recommender.MovieRecommender.standard_scaler">
+<span class="sig-name descname"><span class="pre">standard_scaler</span></span><a class="headerlink" href="#netflix_recommender.movie_recommender.MovieRecommender.standard_scaler" title="Link to this definition">#</a></dt>
+<dd><p>The standard scaler to use for feature scaling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>StandardScaler</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="netflix_recommender.movie_recommender.MovieRecommender.generate_embeddings">
+<span class="sig-name descname"><span class="pre">generate_embeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/netflix_recommender/movie_recommender.html#MovieRecommender.generate_embeddings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netflix_recommender.movie_recommender.MovieRecommender.generate_embeddings" title="Link to this definition">#</a></dt>
+<dd><p>Generates text embeddings for the specified columns in the provided data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – The data to generate embeddings for.</p></li>
+<li><p><strong>columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The columns to generate embeddings for.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to show progress bars. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A dictionary mapping column names to embedded columns.</dt><dd><p>The embedded columns are DataFrames with the same index as the input data,
+containing the embedded values for each column.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, pd.DataFrame]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="netflix_recommender.movie_recommender.MovieRecommender.obtain_classfication_report">
+<span class="sig-name descname"><span class="pre">obtain_classfication_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/netflix_recommender/movie_recommender.html#MovieRecommender.obtain_classfication_report"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netflix_recommender.movie_recommender.MovieRecommender.obtain_classfication_report" title="Link to this definition">#</a></dt>
+<dd><p>Obtains a classification report for the given true and predicted labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>np.ndarray</em>) – The true labels.</p></li>
+<li><p><strong>y_pred</strong> (<em>np.ndarray</em>) – The predicted labels.</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to plot the confusion matrix. Defaults to True.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to show the classification report. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The confusion matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="netflix_recommender.movie_recommender.MovieRecommender.one_hot_encode_columns">
+<span class="sig-name descname"><span class="pre">one_hot_encode_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/netflix_recommender/movie_recommender.html#MovieRecommender.one_hot_encode_columns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netflix_recommender.movie_recommender.MovieRecommender.one_hot_encode_columns" title="Link to this definition">#</a></dt>
+<dd><p>One hot encode columns in a DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – DataFrame to one hot encode columns from.</p></li>
+<li><p><strong>columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Columns to one hot encode. Defaults to [].</p></li>
+<li><p><strong>list_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Columns to one hot encode as lists. Defaults to [].</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to print logs to the console. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A tuple containing two dictionaries.</dt><dd><p>The first dictionary maps column names to one hot encoded DataFrames.
+The second dictionary maps column names to one hot encoded DataFrames as lists.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[dict[str, pd.DataFrame], dict[str, pd.DataFrame]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="netflix_recommender.movie_recommender.MovieRecommender.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predict_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/netflix_recommender/movie_recommender.html#MovieRecommender.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netflix_recommender.movie_recommender.MovieRecommender.predict" title="Link to this definition">#</a></dt>
+<dd><p>Predicts the ratings for a given set of movies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predict_x</strong> (<em>pd.DataFrame</em>) – The DataFrame containing the movies to predict ratings for.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether or not to print the steps of the prediction process. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted ratings.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="custom_exceptions.html#netflix_recommender.custom_exceptions.ModelNotFitError" title="netflix_recommender.custom_exceptions.ModelNotFitError"><strong>ModelNotFitError</strong></a> – If the model has not been fit before calling this method.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="netflix_recommender.movie_recommender.MovieRecommender.preprocess_train_predict">
+<span class="sig-name descname"><span class="pre">preprocess_train_predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predict_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_hot_encode_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_hot_encode_list_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cross_validation_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;netflix_recommender.utils.CrossValidationGrid</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/netflix_recommender/movie_recommender.html#MovieRecommender.preprocess_train_predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netflix_recommender.movie_recommender.MovieRecommender.preprocess_train_predict" title="Link to this definition">#</a></dt>
+<dd><p>Classifies matches based on the given training data and predicts ratings for a given set of movies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_x</strong> (<em>pd.DataFrame</em>) – The DataFrame containing the training data.</p></li>
+<li><p><strong>train_y</strong> (<em>pd.Series</em>) – The Series containing the training labels.</p></li>
+<li><p><strong>predict_x</strong> (<em>pd.DataFrame</em>) – The DataFrame containing the movies to predict ratings for.</p></li>
+<li><p><strong>embedding_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The columns to generate embeddings for. Defaults to [].</p></li>
+<li><p><strong>one_hot_encode_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The columns to one-hot encode. Defaults to [].</p></li>
+<li><p><strong>one_hot_encode_list_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The list columns to one-hot encode. Defaults to [].</p></li>
+<li><p><strong>cross_validation_grid</strong> (<a class="reference internal" href="utils.html#netflix_recommender.utils.CrossValidationGrid" title="netflix_recommender.utils.CrossValidationGrid"><em>CrossValidationGrid</em></a><em>, </em><em>optional</em>) – The cross validation grid to use. Defaults to CrossValidationGrid().</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to plot the cross validation results. Defaults to True.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to print logs to the console. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted ratings.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="netflix_recommender.movie_recommender.MovieRecommender.preprocess_train_suggest">
+<span class="sig-name descname"><span class="pre">preprocess_train_suggest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predict_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_hot_encode_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_hot_encode_list_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cross_validation_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;netflix_recommender.utils.CrossValidationGrid</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/netflix_recommender/movie_recommender.html#MovieRecommender.preprocess_train_suggest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netflix_recommender.movie_recommender.MovieRecommender.preprocess_train_suggest" title="Link to this definition">#</a></dt>
+<dd><p>Preprocesses the data for training the model and making predictions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_x</strong> (<em>pd.DataFrame</em>) – The training data.</p></li>
+<li><p><strong>train_y</strong> (<em>pd.Series</em>) – The labels for the training data.</p></li>
+<li><p><strong>predict_x</strong> (<em>pd.DataFrame</em>) – The data to make predictions on.</p></li>
+<li><p><strong>embedding_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The columns to generate embeddings for. Defaults to [].</p></li>
+<li><p><strong>one_hot_encode_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The columns to one-hot encode. Defaults to [].</p></li>
+<li><p><strong>one_hot_encode_list_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The columns to one-hot encode as lists. Defaults to [].</p></li>
+<li><p><strong>cross_validation_grid</strong> (<a class="reference internal" href="utils.html#netflix_recommender.utils.CrossValidationGrid" title="netflix_recommender.utils.CrossValidationGrid"><em>CrossValidationGrid</em></a><em>, </em><em>optional</em>) – The cross-validation grid to use. Defaults to CrossValidationGrid().</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to plot the results of cross-validation. Defaults to True.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to show progress bars. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The data with the predicted labels, filtered to only include the rows with a positive prediction.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="netflix_recommender.movie_recommender.MovieRecommender.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cross_validation_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;netflix_recommender.utils.CrossValidationGrid</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/netflix_recommender/movie_recommender.html#MovieRecommender.train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netflix_recommender.movie_recommender.MovieRecommender.train" title="Link to this definition">#</a></dt>
+<dd><p>Trains a classification model on the given data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_x</strong> (<em>pd.DataFrame</em>) – The training data.</p></li>
+<li><p><strong>train_y</strong> (<em>pd.Series</em>) – The training labels.</p></li>
+<li><p><strong>cross_validation_grid</strong> (<a class="reference internal" href="utils.html#netflix_recommender.utils.CrossValidationGrid" title="netflix_recommender.utils.CrossValidationGrid"><em>CrossValidationGrid</em></a><em>, </em><em>optional</em>) – The cross validation grid to use.
+Defaults to CrossValidationGrid().</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to plot the cross validation results. Defaults to True.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to print logs to the console. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="custom_exceptions.html#netflix_recommender.custom_exceptions.InvalidTrainDataError" title="netflix_recommender.custom_exceptions.InvalidTrainDataError"><strong>InvalidTrainDataError</strong></a> – If the lengths of train_x and train_y do not match,
+    or if the values of train_y are not either 0 or 1.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="netflix_recommender.movie_recommender.MovieRecommender.train_evaluate">
+<span class="sig-name descname"><span class="pre">train_evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_hot_encode_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_hot_encode_list_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cross_validation_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;netflix_recommender.utils.CrossValidationGrid</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/netflix_recommender/movie_recommender.html#MovieRecommender.train_evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netflix_recommender.movie_recommender.MovieRecommender.train_evaluate" title="Link to this definition">#</a></dt>
+<dd><p>Trains a model and evaluates its performance on a test set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_x</strong> (<em>pd.DataFrame</em>) – The feature data.</p></li>
+<li><p><strong>data_y</strong> (<em>pd.Series</em>) – The target data.</p></li>
+<li><p><strong>embedding_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The columns to generate embeddings for. Defaults to [].</p></li>
+<li><p><strong>one_hot_encode_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The columns to one-hot encode. Defaults to [].</p></li>
+<li><p><strong>one_hot_encode_list_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The list columns to one-hot encode. Defaults to [].</p></li>
+<li><p><strong>cross_validation_grid</strong> (<a class="reference internal" href="utils.html#netflix_recommender.utils.CrossValidationGrid" title="netflix_recommender.utils.CrossValidationGrid"><em>CrossValidationGrid</em></a><em>, </em><em>optional</em>) – The cross validation grid to use. Defaults to CrossValidationGrid().</p></li>
+<li><p><strong>test_size</strong> (<em>float</em><em>, </em><em>optional</em>) – The proportion of the data to include in the test set. Defaults to 0.2.</p></li>
+<li><p><strong>random_state</strong> (<em>int</em><em>, </em><em>optional</em>) – The random state to use when splitting the data. Defaults to 42.</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to plot the confusion matrix. Defaults to True.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to print logs to the console. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The confusion matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="netflix_recommender.movie_recommender.MovieRecommender.train_suggest_from_API">
+<span class="sig-name descname"><span class="pre">train_suggest_from_API</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">likes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dislikes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_call</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_hot_encode_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_hot_encode_list_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cross_validation_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;netflix_recommender.utils.CrossValidationGrid</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/netflix_recommender/movie_recommender.html#MovieRecommender.train_suggest_from_API"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netflix_recommender.movie_recommender.MovieRecommender.train_suggest_from_API" title="Link to this definition">#</a></dt>
+<dd><p>Fetches information about a movie or TV show from The Movie Database by its title, preprocesses the data,
+trains a model based on the given data, and predicts ratings for a given set of movies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>likes</strong> (<em>list</em>) – The movies or TV shows that the user likes.</p></li>
+<li><p><strong>dislikes</strong> (<em>list</em>) – The movies or TV shows that the user dislikes.</p></li>
+<li><p><strong>api_call</strong> (<em>Callable</em><em>[</em><em>[</em><em>Any</em><em>]</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em> | </em><em>float</em><em> | </em><em>int</em><em> | </em><em>list</em><em> | </em><em>None</em><em>] </em><em>| </em><em>None</em><em>]</em>) – A function that
+fetches information about a movie or TV show from The Movie Database.</p></li>
+<li><p><strong>new_data</strong> (<em>pd.DataFrame</em>) – The movies or TV shows to predict ratings for.</p></li>
+<li><p><strong>embedding_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The columns to generate embeddings for. Defaults to [].</p></li>
+<li><p><strong>one_hot_encode_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The columns to one-hot encode. Defaults to [].</p></li>
+<li><p><strong>one_hot_encode_list_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The list columns to one-hot encode. Defaults to [].</p></li>
+<li><p><strong>cross_validation_grid</strong> (<a class="reference internal" href="utils.html#netflix_recommender.utils.CrossValidationGrid" title="netflix_recommender.utils.CrossValidationGrid"><em>CrossValidationGrid</em></a><em>, </em><em>optional</em>) – The cross validation grid to use. Defaults to CrossValidationGrid().</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to plot the cross validation results. Defaults to True.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to print logs to the console. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted ratings.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#netflix_recommender.movie_recommender.MovieRecommender"><code class="docutils literal notranslate"><span class="pre">MovieRecommender</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netflix_recommender.movie_recommender.MovieRecommender.plots_save_path"><code class="docutils literal notranslate"><span class="pre">MovieRecommender.plots_save_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netflix_recommender.movie_recommender.MovieRecommender.sentence_transformer"><code class="docutils literal notranslate"><span class="pre">MovieRecommender.sentence_transformer</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netflix_recommender.movie_recommender.MovieRecommender.standard_scaler"><code class="docutils literal notranslate"><span class="pre">MovieRecommender.standard_scaler</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netflix_recommender.movie_recommender.MovieRecommender.generate_embeddings"><code class="docutils literal notranslate"><span class="pre">MovieRecommender.generate_embeddings()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netflix_recommender.movie_recommender.MovieRecommender.obtain_classfication_report"><code class="docutils literal notranslate"><span class="pre">MovieRecommender.obtain_classfication_report()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netflix_recommender.movie_recommender.MovieRecommender.one_hot_encode_columns"><code class="docutils literal notranslate"><span class="pre">MovieRecommender.one_hot_encode_columns()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netflix_recommender.movie_recommender.MovieRecommender.predict"><code class="docutils literal notranslate"><span class="pre">MovieRecommender.predict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netflix_recommender.movie_recommender.MovieRecommender.preprocess_train_predict"><code class="docutils literal notranslate"><span class="pre">MovieRecommender.preprocess_train_predict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netflix_recommender.movie_recommender.MovieRecommender.preprocess_train_suggest"><code class="docutils literal notranslate"><span class="pre">MovieRecommender.preprocess_train_suggest()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netflix_recommender.movie_recommender.MovieRecommender.train"><code class="docutils literal notranslate"><span class="pre">MovieRecommender.train()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netflix_recommender.movie_recommender.MovieRecommender.train_evaluate"><code class="docutils literal notranslate"><span class="pre">MovieRecommender.train_evaluate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netflix_recommender.movie_recommender.MovieRecommender.train_suggest_from_API"><code class="docutils literal notranslate"><span class="pre">MovieRecommender.train_suggest_from_API()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

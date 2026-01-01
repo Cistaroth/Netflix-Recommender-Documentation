@@ -1,0 +1,13 @@
+Netflix Recommender
+===================
+
+Core package for the Netflix recommender system.
+
+.. toctree::
+   :maxdepth: 1
+
+   api_utils
+   custom_exceptions
+   log
+   movie_recommender
+   utils

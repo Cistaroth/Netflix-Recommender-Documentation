@@ -1,0 +1,7 @@
+Log Utilities
+=============
+
+Custom Logging Module
+
+.. automodule:: netflix_recommender.log
+    :members:

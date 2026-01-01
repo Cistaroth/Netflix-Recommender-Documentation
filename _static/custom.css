@@ -1,0 +1,10 @@
+/* Add breathing room between the logo/title and the nav links */
+.navbar-header-items {
+    margin-left: 2rem; /* Adjust this value as needed */
+}
+
+/* Ensure the brand section doesn't grow too large and squash the nav */
+.navbar-brand {
+    padding-right: 2rem;
+    flex-shrink: 0;
+}

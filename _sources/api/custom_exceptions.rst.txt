@@ -1,0 +1,7 @@
+Custom Exceptions 
+=================
+
+Custom Exceptions Module
+
+.. automodule:: netflix_recommender.custom_exceptions
+    :members:

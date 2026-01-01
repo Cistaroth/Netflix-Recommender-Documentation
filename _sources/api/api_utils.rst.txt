@@ -1,0 +1,7 @@
+API Utilities
+=============
+
+API Utilities Module using TMDB
+
+.. automodule:: netflix_recommender.api_utils
+    :members:

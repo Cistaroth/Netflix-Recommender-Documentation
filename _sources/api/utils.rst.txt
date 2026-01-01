@@ -1,0 +1,7 @@
+Utilities
+=========
+
+Utilities Module for The Netflix Recommender
+
+.. automodule:: netflix_recommender.utils
+    :members:

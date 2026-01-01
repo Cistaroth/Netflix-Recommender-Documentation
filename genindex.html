@@ -1,0 +1,565 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; Netflix Recommender 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c9d161cb" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Netflix Recommender 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/modules.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/modules.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#K"><strong>K</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ 
+</div>
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/utils.html#netflix_recommender.utils.CrossValidationGrid.best_row_strategy">best_row_strategy (netflix_recommender.utils.CrossValidationGrid attribute)</a>
+
+      <ul>
+        <li><a href="api/utils.html#id0">(netflix_recommender.utils.CrossValidationGrid property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/api_utils.html#netflix_recommender.api_utils.construct_genre_map">construct_genre_map() (in module netflix_recommender.api_utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/utils.html#netflix_recommender.utils.CrossValidationGrid">CrossValidationGrid (class in netflix_recommender.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/utils.html#netflix_recommender.utils.CrossValidationGrid.folds">folds (netflix_recommender.utils.CrossValidationGrid attribute)</a>
+
+      <ul>
+        <li><a href="api/utils.html#id1">(netflix_recommender.utils.CrossValidationGrid property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.generate_embeddings">generate_embeddings() (netflix_recommender.movie_recommender.MovieRecommender method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/log.html#netflix_recommender.log.get_terminal_width">get_terminal_width() (in module netflix_recommender.log)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/log.html#netflix_recommender.log.info">info() (in module netflix_recommender.log)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/custom_exceptions.html#netflix_recommender.custom_exceptions.InvalidTrainDataError">InvalidTrainDataError</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/utils.html#netflix_recommender.utils.CrossValidationGrid.knn_metrics">knn_metrics (netflix_recommender.utils.CrossValidationGrid attribute)</a>
+
+      <ul>
+        <li><a href="api/utils.html#id2">(netflix_recommender.utils.CrossValidationGrid property)</a>
+</li>
+      </ul></li>
+      <li><a href="api/utils.html#netflix_recommender.utils.CrossValidationGrid.knn_n_neighbours">knn_n_neighbours (netflix_recommender.utils.CrossValidationGrid attribute)</a>
+
+      <ul>
+        <li><a href="api/utils.html#id3">(netflix_recommender.utils.CrossValidationGrid property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/utils.html#netflix_recommender.utils.CrossValidationGrid.knn_weights">knn_weights (netflix_recommender.utils.CrossValidationGrid attribute)</a>
+
+      <ul>
+        <li><a href="api/utils.html#id4">(netflix_recommender.utils.CrossValidationGrid property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/custom_exceptions.html#netflix_recommender.custom_exceptions.ModelNotFitError">ModelNotFitError</a>
+</li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="api/api_utils.html#module-netflix_recommender.api_utils">netflix_recommender.api_utils</a>
+</li>
+        <li><a href="api/custom_exceptions.html#module-netflix_recommender.custom_exceptions">netflix_recommender.custom_exceptions</a>
+</li>
+        <li><a href="api/log.html#module-netflix_recommender.log">netflix_recommender.log</a>
+</li>
+        <li><a href="api/utils.html#module-netflix_recommender.utils">netflix_recommender.utils</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender">MovieRecommender (class in netflix_recommender.movie_recommender)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    netflix_recommender.api_utils
+
+      <ul>
+        <li><a href="api/api_utils.html#module-netflix_recommender.api_utils">module</a>
+</li>
+      </ul></li>
+      <li>
+    netflix_recommender.custom_exceptions
+
+      <ul>
+        <li><a href="api/custom_exceptions.html#module-netflix_recommender.custom_exceptions">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    netflix_recommender.log
+
+      <ul>
+        <li><a href="api/log.html#module-netflix_recommender.log">module</a>
+</li>
+      </ul></li>
+      <li>
+    netflix_recommender.utils
+
+      <ul>
+        <li><a href="api/utils.html#module-netflix_recommender.utils">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.obtain_classfication_report">obtain_classfication_report() (netflix_recommender.movie_recommender.MovieRecommender method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.one_hot_encode_columns">one_hot_encode_columns() (netflix_recommender.movie_recommender.MovieRecommender method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/utils.html#netflix_recommender.utils.CrossValidationGrid.pca_n_components">pca_n_components (netflix_recommender.utils.CrossValidationGrid attribute)</a>
+
+      <ul>
+        <li><a href="api/utils.html#id5">(netflix_recommender.utils.CrossValidationGrid property)</a>
+</li>
+      </ul></li>
+      <li><a href="api/log.html#netflix_recommender.log.plain">plain() (in module netflix_recommender.log)</a>
+</li>
+      <li><a href="api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.plots_save_path">plots_save_path (netflix_recommender.movie_recommender.MovieRecommender attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.predict">predict() (netflix_recommender.movie_recommender.MovieRecommender method)</a>
+</li>
+      <li><a href="api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.preprocess_train_predict">preprocess_train_predict() (netflix_recommender.movie_recommender.MovieRecommender method)</a>
+</li>
+      <li><a href="api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.preprocess_train_suggest">preprocess_train_suggest() (netflix_recommender.movie_recommender.MovieRecommender method)</a>
+</li>
+      <li><a href="api/utils.html#netflix_recommender.utils.CrossValidationGrid.product">product (netflix_recommender.utils.CrossValidationGrid property)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/log.html#netflix_recommender.log.section">section() (in module netflix_recommender.log)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.sentence_transformer">sentence_transformer (netflix_recommender.movie_recommender.MovieRecommender attribute)</a>
+</li>
+      <li><a href="api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.standard_scaler">standard_scaler (netflix_recommender.movie_recommender.MovieRecommender attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/api_utils.html#netflix_recommender.api_utils.TMDB_fetch_new_movies">TMDB_fetch_new_movies() (in module netflix_recommender.api_utils)</a>
+</li>
+      <li><a href="api/api_utils.html#netflix_recommender.api_utils.TMDB_info_by_ID">TMDB_info_by_ID() (in module netflix_recommender.api_utils)</a>
+</li>
+      <li><a href="api/api_utils.html#netflix_recommender.api_utils.TMDB_info_by_title">TMDB_info_by_title() (in module netflix_recommender.api_utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.train">train() (netflix_recommender.movie_recommender.MovieRecommender method)</a>
+</li>
+      <li><a href="api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.train_evaluate">train_evaluate() (netflix_recommender.movie_recommender.MovieRecommender method)</a>
+</li>
+      <li><a href="api/movie_recommender.html#netflix_recommender.movie_recommender.MovieRecommender.train_suggest_from_API">train_suggest_from_API() (netflix_recommender.movie_recommender.MovieRecommender method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/utils.html#netflix_recommender.utils.CrossValidationGrid.validation_metric">validation_metric (netflix_recommender.utils.CrossValidationGrid attribute)</a>
+
+      <ul>
+        <li><a href="api/utils.html#id6">(netflix_recommender.utils.CrossValidationGrid property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

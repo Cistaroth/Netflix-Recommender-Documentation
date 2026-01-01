@@ -1,0 +1,20 @@
+.. NetflixRecommender documentation master file, created by
+   sphinx-quickstart on Thu Jan  1 18:12:32 2026.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+NetflixRecommender documentation
+================================
+
+This project provides a modular movie recommendation system with utilities,
+logging, API helpers, and custom exception handling.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   api/modules
+
+Indices and Tables
+------------------
+* :ref:`search`
